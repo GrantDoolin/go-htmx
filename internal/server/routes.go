@@ -11,8 +11,6 @@ import (
 func (s *Server) RegisterRoutes() http.Handler {
 	r := gin.Default()
 
-	r.LoadHTMLFiles("cmd/templates/base.templ")
-
 	ginHtmlRenderer := r.HTMLRender
 	r.HTMLRender = &gintemplrenderer.HTMLTemplRenderer{FallbackHtmlRenderer: ginHtmlRenderer}
 
@@ -26,8 +24,8 @@ func (s *Server) RegisterRoutes() http.Handler {
 		AllowCredentials: true, // Enable cookies/auth
 	}))
 
-	r.GET("/web", func(c *gin.Context) {
-		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, Base())
+	r.GET("/", func(c *gin.Context) {
+		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, Test("Grant"))
 		c.Render(http.StatusOK, r)
 	})
 
