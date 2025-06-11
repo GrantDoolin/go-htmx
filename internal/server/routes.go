@@ -1,14 +1,11 @@
 package server
 
 import (
-	"go-htmx/cmd/web"
 	"net/http"
 
 	"github.com/a-h/templ/examples/integration-gin/gintemplrenderer"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-
-	"io/fs"
 )
 
 func (s *Server) RegisterRoutes() http.Handler {
@@ -29,20 +26,10 @@ func (s *Server) RegisterRoutes() http.Handler {
 		AllowCredentials: true, // Enable cookies/auth
 	}))
 
-	r.GET("/", func(c *gin.Context) {
+	r.GET("/web", func(c *gin.Context) {
 		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, Base())
 		c.Render(http.StatusOK, r)
 	})
 
-	staticFiles, _ := fs.Sub(web.Files, "assets")
-	r.StaticFS("/assets", http.FS(staticFiles))
-
 	return r
-}
-
-func (s *Server) HelloWorldHandler(c *gin.Context) {
-	resp := make(map[string]string)
-	resp["message"] = "Hello World"
-
-	c.JSON(http.StatusOK, resp)
 }
