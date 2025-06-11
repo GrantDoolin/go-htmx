@@ -4,6 +4,7 @@ go 1.24.3
 
 require (
 	github.com/a-h/templ v0.3.898
+	github.com/a-h/templ/examples/integration-gin v0.0.0-20250610141150-9b34663a6ef0
 	github.com/gin-contrib/cors v1.7.5
 	github.com/gin-gonic/gin v1.10.1
 	github.com/joho/godotenv v1.5.1

@@ -1,5 +1,7 @@
 github.com/a-h/templ v0.3.898 h1:g9oxL/dmM6tvwRe2egJS8hBDQTncokbMoOFk1oJMX7s=
 github.com/a-h/templ v0.3.898/go.mod h1:oLBbZVQ6//Q6zpvSMPTuBK0F3qOtBdFBcGRspcT+VNQ=
+github.com/a-h/templ/examples/integration-gin v0.0.0-20250610141150-9b34663a6ef0 h1:WEatUfTkcJJnOtljkxt8+zmn48Cw6tNXwoPn6uXh6Zw=
+github.com/a-h/templ/examples/integration-gin v0.0.0-20250610141150-9b34663a6ef0/go.mod h1:WMIQoAHS6bEBr6QPgD8N8F/cj10Wxm74+YQ8BJI1Xng=
 github.com/bytedance/sonic v1.13.3 h1:MS8gmaH16Gtirygw7jV91pDCN33NyMrPbN7qiYhEsF0=
 github.com/bytedance/sonic v1.13.3/go.mod h1:o68xyaF9u2gvVBuGHPlUVCy+ZfmNNO5ETf1+KgkJhz4=
 github.com/bytedance/sonic/loader v0.1.1/go.mod h1:ncP89zfokxS5LZrJxl5z0UJcsk4M4yY2JpfqGeCtNLU=
