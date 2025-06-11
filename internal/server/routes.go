@@ -5,6 +5,10 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
+	"github.com/a-h/templ"
+	"go-htmx/cmd/web"
+	"io/fs"
 )
 
 func (s *Server) RegisterRoutes() http.Handler {
@@ -18,6 +22,17 @@ func (s *Server) RegisterRoutes() http.Handler {
 	}))
 
 	r.GET("/", s.HelloWorldHandler)
+
+	staticFiles, _ := fs.Sub(web.Files, "assets")
+	r.StaticFS("/assets", http.FS(staticFiles))
+
+	r.GET("/web", func(c *gin.Context) {
+		templ.Handler(web.HelloForm()).ServeHTTP(c.Writer, c.Request)
+	})
+
+	r.POST("/hello", func(c *gin.Context) {
+		web.HelloWebHandler(c.Writer, c.Request)
+	})
 
 	return r
 }
