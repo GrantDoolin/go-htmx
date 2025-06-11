@@ -8,6 +8,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// HelloWorldHandler responds with a JSON hello world message.
+func (s *Server) HelloWorldHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message": "Hello World"})
+}
+
 func TestHelloWorldHandler(t *testing.T) {
 	s := &Server{}
 	r := gin.New()
