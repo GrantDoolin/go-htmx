@@ -3,6 +3,7 @@ package server
 import (
 	"net/http"
 
+	"github.com/a-h/templ"
 	"github.com/a-h/templ/examples/integration-gin/gintemplrenderer"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -25,9 +26,14 @@ func (s *Server) RegisterRoutes() http.Handler {
 	}))
 
 	r.GET("/", func(c *gin.Context) {
-		r := gintemplrenderer.New(c.Request.Context(), http.StatusOK, Test("Grant"))
-		c.Render(http.StatusOK, r)
+		getHome(c, s, r)
+
 	})
 
 	return r
+}
+
+func render(c *gin.Context, status int, template templ.Component) error {
+	c.Status(status)
+	return template.Render(c.Request.Context(), c.Writer)
 }
